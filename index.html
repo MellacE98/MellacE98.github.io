@@ -1,1 +1,103 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #1a1a1a;
+    }
+    
+    .container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+      background: #2d2d2d;
+      border-radius: 10px;
+    }
+    
+    .player {
+      text-align: center;
+      padding: 20px;
+      background: #3d3d3d;
+      border-radius: 8px;
+      color: white;
+    }
+    
+    .life {
+      font-size: 48px;
+      margin: 20px 0;
+    }
+    
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #4CAF50;
+      color: white;
+    }
+    
+    button:hover {
+      opacity: 0.9;
+    }
+    
+    .reset {
+      grid-column: span 2;
+      background: #f44336;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="player">
+      <h2>Player 1</h2>
+      <div class="life" id="player1-life">20</div>
+      <button onclick="changeLife(1, 1)">+1</button>
+      <button onclick="changeLife(1, -1)">-1</button>
+      <button onclick="changeLife(1, 5)">+5</button>
+      <button onclick="changeLife(1, -5)">-5</button>
+    </div>
+    
+    <div class="player">
+      <h2>Player 2</h2>
+      <div class="life" id="player2-life">20</div>
+      <button onclick="changeLife(2, 1)">+1</button>
+      <button onclick="changeLife(2, -1)">-1</button>
+      <button onclick="changeLife(2, 5)">+5</button>
+      <button onclick="changeLife(2, -5)">-5</button>
+    </div>
+    
+    <button class="reset" onclick="resetLife()">Reset Game</button>
+  </div>
+
+  <script>
+    let player1Life = 20;
+    let player2Life = 20;
+
+    function changeLife(player, amount) {
+      if (player === 1) {
+        player1Life += amount;
+        document.getElementById('player1-life').textContent = player1Life;
+      } else {
+        player2Life += amount;
+        document.getElementById('player2-life').textContent = player2Life;
+      }
+    }
+
+    function resetLife() {
+      player1Life = 20;
+      player2Life = 20;
+      document.getElementById('player1-life').textContent = player1Life;
+      document.getElementById('player2-life').textContent = player2Life;
+    }
+  </script>
+</body>
+</html>
